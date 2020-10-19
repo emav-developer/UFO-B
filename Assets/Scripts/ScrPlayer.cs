@@ -5,21 +5,40 @@ using UnityEngine;
 public class ScrPlayer : MonoBehaviour
 {
     [SerializeField]
-    float velocitat=3;
+    float forsa = 3;
+    float x, y;  // variables per guardar lectura dels cursors
+
+    // Per accedir al component RigidBody:
+    Rigidbody2D rb;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>(); // ara rb apunta al component rigidBody del player
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x, y; // per llegir gamepad
         x = Input.GetAxis("Horizontal");  // llegim moviment horitzontal
         y = Input.GetAxis("Vertical");    // llegim moviment vertical
-        // print("Horitzontal: " + x + " / Vertical: " + y);  // mostrem x e y
-        transform.Translate(x *Time.deltaTime * velocitat, y*Time.deltaTime*velocitat, 0);
+    }
 
+    private void FixedUpdate()
+    {
+        rb.AddForce(new Vector2(x*forsa, y*forsa));
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // print(collision.name);
+        // if (collision.tag == "pickup") Destroy(collision.gameObject);
+        if (collision.CompareTag("pickup"))
+        {
+            Destroy(collision.gameObject);
+            ScrControlGame.punts += 5;
+            print("Puntuació: " + ScrControlGame.punts);
+        }
     }
 }

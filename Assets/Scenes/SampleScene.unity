@@ -440,6 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1099629745}
   - component: {fileID: 1099629744}
+  - component: {fileID: 1099629746}
   m_Layer: 0
   m_Name: Taulell
   m_TagString: Untagged
@@ -511,6 +512,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1099629746
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099629743}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -12.4, y: -12.4}
+  - {x: 12.4, y: -12.4}
+  - {x: 12.483824, y: 12.21972}
+  - {x: -12.510849, y: 12.453998}
+  - {x: -12.442412, y: -12.2806835}
 --- !u!4 &1294028183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6967210002439220292, guid: 6e7a7ca69bc98fa469af0565ddec711b,
@@ -604,6 +626,8 @@ GameObject:
   - component: {fileID: 1814271446}
   - component: {fileID: 1814271448}
   - component: {fileID: 1814271445}
+  - component: {fileID: 1814271449}
+  - component: {fileID: 1814271450}
   m_Layer: 0
   m_Name: UFO
   m_TagString: Untagged
@@ -623,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80416e6c8d9c10443a3405c187b4a9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocitat: 27
+  forsa: 5000
 --- !u!212 &1814271446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -700,6 +724,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57726b7666c28ea4aa76e7a0b3f9ef50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1814271449
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814271444}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 50
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &1814271450
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814271444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.08
 --- !u!1001 &2039887215
 PrefabInstance:
   m_ObjectHideFlags: 0
