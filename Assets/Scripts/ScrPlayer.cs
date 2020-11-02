@@ -9,13 +9,16 @@ public class ScrPlayer : MonoBehaviour
     float x, y;  // variables per guardar lectura dels cursors
 
     // Per accedir al component RigidBody:
-    Rigidbody2D rb;
-
+    Rigidbody2D rb; 
+    ScrPickup scrP;
+    AudioSource a; // per accedir a l'àudio
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // ara rb apunta al component rigidBody del player
+        a = GetComponent<AudioSource>(); 
+        // print("En aquesta escena: " + ScrControlGame.pickups);
     }
 
     // Update is called once per frame
@@ -36,9 +39,22 @@ public class ScrPlayer : MonoBehaviour
         // if (collision.tag == "pickup") Destroy(collision.gameObject);
         if (collision.CompareTag("pickup"))
         {
+            AudioSource audioP; // per accedir a l'àudio del pickup
+
+            audioP = collision.GetComponent<AudioSource>();
+            AudioSource.PlayClipAtPoint(audioP.clip, Camera.main.transform.position);
+
+
+            scrP = collision.GetComponent<ScrPickup>();
+            ScrControlGame.punts += scrP.valor;
             Destroy(collision.gameObject);
-            ScrControlGame.punts += 5;
-            print("Puntuació: " + ScrControlGame.punts);
+            ScrControlGame.pickups--;
+
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        a.Play();
     }
 }
